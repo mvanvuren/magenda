@@ -9,13 +9,9 @@
 <link rel="apple-touch-icon" sizes="72x72" href="icon72.png" />
 <link rel="apple-touch-icon" sizes="114x114" href="icon114.png" />
 <link rel="shortcut icon" href="favicon.ico" />
-<!--<link rel="stylesheet" href="/style/combined-3.1.min.css.php" type="text/css" />-->
-<link rel="stylesheet" href="/style/jquery.mobile-1.4.5.min.css" type="text/css" />
-<link rel="stylesheet" href="/style/magenda.css" type="text/css" />
-<!--<script type="text/javascript" src="/js/combined-3.1.min.js.php"></script>-->
-<script type="text/javascript" src="/js/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="/js/jquery.cookie.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" integrity="sha512-CwHUCK55pONjDxvPZQeuwKpxos8mPyEv9gGuWC8Vr0357J2uXg1PycGDPND9EgdokSFTG6kgSApoDj9OM22ksw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="/js/magenda.js"></script>
-<script type="text/javascript" src="/js/jquery.mobile-1.4.5.min.js"></script>
-<!--<script type="text/javascript">document.write(unescape("%3Cscript src='http://www.google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));</script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js" integrity="sha512-FbnNPigZZCDhMM22ezvan3xN2/E/oBd9GxqtpiBcK1VZuzBAt0V1EmTtteoYuYxWrqwqBA6zb1OTB887QSjAsw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
