@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.6.6deb4
+- https://www.phpmyadmin.net
+-
+- Host: ...
+- Generation Time: Nov 04, 2021 at 01:35 PM
+- Server version: 10.2.40-MariaDB-log
+- PHP Version: 7.3.9-1~deb10u1
+-->
+
+<pma_xml_export version="1.0"
+  xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+  <!--
+    - Structure schemas
+    -->
+  <pma:structure_schemas>
+    <pma:database name="..." collation="latin1_swedish_ci" charset="latin1">
+      <pma:table name="artist">
+                CREATE TABLE `artist` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(215) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `name` (`name`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=12388 DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="province">
+                CREATE TABLE `province` (
+                  `id` int(11) NOT NULL,
+                  `name` varchar(15) NOT NULL,
+                  `code` char(2) CHARACTER SET ascii NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `name` (`name`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="municipality">
+                CREATE TABLE `municipality` (
+                  `id` int(11) NOT NULL,
+                  `provinceid` int(11) NOT NULL,
+                  `name` varchar(30) NOT NULL,
+                  `code` int(4) NOT NULL,
+                  `latitude` decimal(8,6) NOT NULL,
+                  `longitude` decimal(8,6) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `provinceid` (`provinceid`),
+                  CONSTRAINT `municipality_ibfk_1` FOREIGN KEY (`provinceid`) REFERENCES `province` (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="municipalitypostalcode">
+                CREATE TABLE `municipalitypostalcode` (
+                  `id` int(11) NOT NULL,
+                  `municipalityid` int(11) NOT NULL,
+                  `postalcode` varchar(4) CHARACTER SET ascii NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `postalcode` (`postalcode`),
+                  KEY `municipalityid` (`municipalityid`),
+                  CONSTRAINT `municipalitypostalcode_ibfk_1` FOREIGN KEY (`municipalityid`) REFERENCES `municipality` (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="podium">
+                CREATE TABLE `podium` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(100) NOT NULL,
+                  `municipalityid` int(11) NOT NULL,
+                  `link` varchar(255) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `name` (`name`),
+                  KEY `municipalityid` (`municipalityid`),
+                  CONSTRAINT `podium_ibfk_1` FOREIGN KEY (`municipalityid`) REFERENCES `municipality` (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=851072 DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="distance">
+                CREATE TABLE `distance` (
+                  `id` int(11) NOT NULL,
+                  `frommunicipalityid` int(11) NOT NULL,
+                  `tomunicipalityid` int(11) NOT NULL,
+                  `distance` decimal(4,1) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `frommunicipalityid_2` (`frommunicipalityid`,`tomunicipalityid`,`distance`),
+                  KEY `frommunicipalityid` (`frommunicipalityid`),
+                  KEY `tomunicipalityid` (`tomunicipalityid`),
+                  CONSTRAINT `distance_ibfk_1` FOREIGN KEY (`frommunicipalityid`) REFERENCES `municipality` (`id`),
+                  CONSTRAINT `distance_ibfk_2` FOREIGN KEY (`tomunicipalityid`) REFERENCES `municipality` (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="genre">
+                CREATE TABLE `genre` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(55) NOT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `name` (`name`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2372 DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="event">
+                CREATE TABLE `event` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `date` date NOT NULL,
+                  `name` varchar(255) NOT NULL,
+                  `location` varchar(100) NOT NULL,
+                  `podiumid` int(11) NOT NULL,
+                  `municipalityid` int(11) NOT NULL,
+                  `artistid` int(11) DEFAULT NULL,
+                  `genreid` int(11) DEFAULT NULL,
+                  `attendance` int(11) NOT NULL DEFAULT 0,
+                  `isfestival` tinyint(1) NOT NULL DEFAULT 0,
+                  `additiondate` date NOT NULL,
+                  PRIMARY KEY (`id`),
+                  KEY `municipalityid` (`municipalityid`),
+                  KEY `podiumid` (`podiumid`),
+                  KEY `artistid` (`artistid`),
+                  KEY `genreid` (`genreid`),
+                  KEY `date` (`date`),
+                  KEY `podiumid_date` (`podiumid`,`date`),
+                  KEY `isfestival_date` (`isfestival`,`date`),
+                  CONSTRAINT `event_ibfk_1` FOREIGN KEY (`municipalityid`) REFERENCES `municipality` (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=30748 DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="user">
+                CREATE TABLE `user` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `uid` varchar(13) CHARACTER SET ascii NOT NULL,
+                  `counter` int(11) NOT NULL DEFAULT 0,
+                  `datelast` datetime DEFAULT NULL,
+                  `code` int(4) DEFAULT NULL,
+                  `cityid` int(11) DEFAULT NULL,
+                  `range` smallint(4) DEFAULT NULL,
+                  `information` text DEFAULT NULL,
+                  PRIMARY KEY (`id`),
+                  UNIQUE KEY `uid` (`uid`),
+                  KEY `cityid` (`cityid`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=6033 DEFAULT CHARSET=utf8;
+      </pma:table>
+      <pma:table name="tag">
+                CREATE TABLE `tag` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `userid` int(11) NOT NULL,
+                  `name` varchar(255) NOT NULL,
+                  PRIMARY KEY (`userid`,`name`),
+                  UNIQUE KEY `id` (`id`),
+                  CONSTRAINT `tag_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=utf8;
+      </pma:table>
+    </pma:database>
+  </pma:structure_schemas>
+</pma_xml_export>
