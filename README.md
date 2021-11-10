@@ -17,11 +17,5 @@ I will probably drop the location based features ;-) and make some minor other c
 - [x] create GitHub repo
 - [x] UC002 - drop location based functionality
 - [x] UC001 - use cached internet sources
+- [x] UC003 - check FP details PS WinSCP
 - [ ] check license
-- [ ] check FP details PS WinSCP:
-
-```powershell
-$sessionOption = New-WinSCPSessionOption -HostName ftp.dotps1.github.io
-$sshHostKeyFingerprint = Get-WinSCPSshHostKeyFingerprint -SessionOption $sessionOption
-$sessionOption.SshHostKeyFingerprint = $sshHostKeyFingerprint
-```
