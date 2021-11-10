@@ -14,8 +14,8 @@ I will probably drop the location based features ;-) and make some minor other c
 
 ## ToDo's
 
-- [ ] create GitHub repo
-- [ ] drop location based functionality
+- [x] create GitHub repo
+- [x] UC002 - drop location based functionality
 - [x] UC001 - use cached internet sources
 - [ ] check license
 - [ ] check FP details PS WinSCP:
