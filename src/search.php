@@ -19,7 +19,7 @@ mysqli_close($con);
                     <label for="sterm"><?=$label['search_description']?></label>
                     <input type="search" name="sterm" id="sterm" value="" placeholder="<?=$label['search_placeholder']?>" />
                 </li>			
-                <li class="ui-field-contain">
+                <!-- <li class="ui-field-contain">
                     <fieldset data-role="controlgroup">
                         <legend><?=$label['search_range']?></legend>
                         <input type="radio" name="range" id="rlocal" value="local" checked="checked" />
@@ -27,7 +27,7 @@ mysqli_close($con);
                         <input type="radio" name="range" id="rnl" value="nl" />
                         <label for="rnl"><?=$label['search_range_nl']?></label>
                     </fieldset>
-                </li>
+                </li> -->
                 <li class="ui-field-contain">
                     <label for="submit"></label>
                     <button type="submit" id="submit" class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-inline"><?=$label['search_submit']?></button>
